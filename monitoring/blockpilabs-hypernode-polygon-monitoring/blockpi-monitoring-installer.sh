@@ -97,7 +97,7 @@ echo -e '\n\e[42mStart Installation...\e[0m\n'
 useradd -rs /bin/false blockpi_monitor
 apt update && apt upgrade -y && apt install curl -y < "/dev/null"
 
-sleep 2 && curl -s logo.sh https://raw.githubusercontent.com/grassets-tech/banner/main/logo.sh | bash  && sleep 2
+sleep 2 && curl -s https://raw.githubusercontent.com/grassets-tech/banner/main/logo.sh | bash  && sleep 2
 apt install htop git httpie jq tmux bc net-tools smartmontools  -y
 
 checkPorts
