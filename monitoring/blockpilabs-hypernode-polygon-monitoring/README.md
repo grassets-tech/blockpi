@@ -22,7 +22,7 @@ Testnet: https://testnet-docs.blockpi.io/guide-for-operators/testnet-1
 ## How to use:
 On HyperNode-Polygon server run
 ```
-wget -q -O blockpi-monitoring-installer.sh https://raw.githubusercontent.com/grassets-tech/blockpi/monitoring/blockpilabs-hypernode-polygon-monitoring/main/blockpi-monitoring-installer.sh && chmod +x blockpi-monitoring-installer.sh && sudo /bin/bash blockpi-monitoring-installer.sh
+wget -q -O blockpi-monitoring-installer.sh https://raw.githubusercontent.com/grassets-tech/blockpi/main/monitoring/blockpilabs-hypernode-polygon-monitoring/blockpi-monitoring-installer.sh && chmod +x blockpi-monitoring-installer.sh && sudo /bin/bash blockpi-monitoring-installer.sh
 ```
 Go to you web browser and enter:
 ```
