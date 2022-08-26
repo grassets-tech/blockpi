@@ -30,7 +30,7 @@ function installNodeExporter {
 	version=`wget -qO- -t1 -T2 "https://api.github.com/repos/prometheus/node_exporter/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'`
 	wget -O node_exporter-${version:1}.linux-amd64.tar.gz https://github.com/prometheus/node_exporter/releases/download/${version}/node_exporter-${version:1}.linux-amd64.tar.gz
 	tar xvfz node_exporter-${version:1}.linux-amd64.tar.gz && cp node_exporter-${version:1}.linux-amd64/node_exporter . && chown -R blockpi_monitor:blockpi_monitor /opt/node_exporter/
-  wget -O /etc/systemd/system/node_exporter.service  https://raw.githubusercontent.com/grassets-tech/blockpi/monitoring/blockpilabs-hypernode-klaytn-monitoring/main/node_exporter.service
+  wget -O /etc/systemd/system/node_exporter.service  https://raw.githubusercontent.com/grassets-tech/blockpi/main/monitoring/blockpilabs-hypernode-klaytn-monitoring/node_exporter.service
 	echo -e '\n\e[42mStarting service node_exporter...\e[0m\n'
 	systemctl enable --now node_exporter
 	sleep 2
@@ -51,7 +51,7 @@ function installPrometheus {
 	version=`wget -qO- -t1 -T2 "https://api.github.com/repos/prometheus/prometheus/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'`
 	wget -O prometheus-${version:1}.linux-amd64.tar.gz https://github.com/prometheus/prometheus/releases/download/${version}/prometheus-${version:1}.linux-amd64.tar.gz
 	tar xvfz prometheus-${version:1}.linux-amd64.tar.gz && cp prometheus-${version:1}.linux-amd64/prometheus . && chown -R blockpi_monitor:blockpi_monitor /opt/prometheus/ /var/lib/prometheus/
-  wget -O /etc/systemd/system/prometheus.service https://raw.githubusercontent.com/grassets-tech/blockpi/monitoring/blockpilabs-hypernode-klaytn-monitoring/main/prometheus.service
+  wget -O /etc/systemd/system/prometheus.service https://raw.githubusercontent.com/grassets-tech/blockpi/main/monitoring/blockpilabs-hypernode-klaytn-monitoring/prometheus.service
 	echo -e '\n\e[42mStarting service prometheus...\e[0m\n'
 	systemctl enable --now prometheus
 	sleep 2	
@@ -73,9 +73,9 @@ function installGrafana {
 	apt-get update
 	apt-get -y install grafana
 	echo -e '\n\e[42mDownloading provisioning files...\e[0m\n'
-  wget -O /etc/grafana/provisioning/datasources/prometheus.yml https://raw.githubusercontent.com/grassets-tech/blockpi/monitoring/blockpilabs-hypernode-klaytn-monitoring/main/grafana/provisioning/datasources/prometheus.yml
-  wget -O /etc/grafana/provisioning/dashboards/dashboards.yml https://raw.githubusercontent.com/grassets-tech/blockpi/monitoring/blockpilabs-hypernode-klaytn-monitoring/main/grafana/provisioning/dashboards/dashboards.yml
-	wget -O /etc/grafana/provisioning/dashboards/HyperNode.json https://raw.githubusercontent.com/grassets-tech/blockpi/monitoring/blockpilabs-hypernode-klaytn-monitoring/main/grafana/provisioning/dashboards/HyperNode.json
+  wget -O /etc/grafana/provisioning/datasources/prometheus.yml https://raw.githubusercontent.com/grassets-tech/blockpi/main/monitoring/blockpilabs-hypernode-klaytn-monitoring/grafana/provisioning/datasources/prometheus.yml
+  wget -O /etc/grafana/provisioning/dashboards/dashboards.yml https://raw.githubusercontent.com/grassets-tech/blockpi/main/monitoring/blockpilabs-hypernode-klaytn-monitoring/grafana/provisioning/dashboards/dashboards.yml
+	wget -O /etc/grafana/provisioning/dashboards/HyperNode.json https://raw.githubusercontent.com/grassets-tech/blockpi/main/monitoring/blockpilabs-hypernode-klaytn-monitoring/grafana/provisioning/dashboards/HyperNode.json
 	chown -R root:grafana /etc/grafana/
 	echo -e '\n\e[42mStarting service grafana...\e[0m\n'
 	systemctl enable --now grafana-server
