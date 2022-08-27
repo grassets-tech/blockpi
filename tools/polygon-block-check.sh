@@ -4,7 +4,7 @@
 ### Prerequisite: curl and jq ###
 
 remote_endpont="https://polygon-rpc.com"
-local_endpoint="http://127.0.0.1:31271"
+local_endpoint="http://127.0.0.1:31291"
 telegram_chat_id="CHAT-ID"
 telegram_bot="BOT-ID"
 alert_message="Polygon Node block difference is: "
